@@ -18,7 +18,7 @@ connection.once('open', ()=>{
     console.log("MongoDB databa connection estbalished sucessfully.");
 })
 
-const teamRouter = require('./routes/team')
+const teamRouter = require('./routes/team');
 app.use('/team', teamRouter);
 
 app.listen(port, () =>{
