@@ -19,7 +19,7 @@ export default class CreateExercise extends Component{
     }
 
     componentDidMount(){
-        axios.get('http://localhost:5000/team/')
+        axios.get('https://s17607challenge.herokuapp.com/team/')
         .then(response => {
             if(response.data.length >0)
             {
@@ -51,21 +51,21 @@ export default class CreateExercise extends Component{
     onSubmit(e){
         e.preventDefault();
         if(this.state.stage === 'win'){
-            axios.post('http://localhost:5000/team/update', {team_name: this.state.team_name1, wins:1, losses:0, ties:0, score:3})
+            axios.post('https://s17607challenge.herokuapp.com/team/update', {team_name: this.state.team_name1, wins:1, losses:0, ties:0, score:3})
             .then(res => console.log(res.data));
-            axios.post('http://localhost:5000/team/update', {team_name: this.state.team_name2, wins:0, losses:1, ties:0, score:0})
+            axios.post('https://s17607challenge.herokuapp.com/team/update', {team_name: this.state.team_name2, wins:0, losses:1, ties:0, score:0})
             .then(res => console.log(res.data));
         }
         else if(this.state.stage ==='lose'){
-            axios.post('http://localhost:5000/team/update', {team_name: this.state.team_name1, wins:0, losses:1, ties:0, score:0})
+            axios.post('https://s17607challenge.herokuapp.com/team/update', {team_name: this.state.team_name1, wins:0, losses:1, ties:0, score:0})
             .then(res => console.log(res.data));
-            axios.post('http://localhost:5000/team/update', {team_name: this.state.team_name2, wins:1, losses:0, ties:0, score:3})
+            axios.post('https://s17607challenge.herokuapp.com/team/update', {team_name: this.state.team_name2, wins:1, losses:0, ties:0, score:3})
             .then(res => console.log(res.data));
         }
         else{
-            axios.post('http://localhost:5000/team/update', {team_name: this.state.team_name2, wins:0, losses:0, ties:1, score:1})
+            axios.post('https://s17607challenge.herokuapp.com/team/update', {team_name: this.state.team_name2, wins:0, losses:0, ties:1, score:1})
             .then(res => console.log(res.data));
-            axios.post('http://localhost:5000/team/update', {team_name: this.state.team_name1, wins:0, losses:0, ties:1, score:1})
+            axios.post('https://s17607challenge.herokuapp.com/team/update', {team_name: this.state.team_name1, wins:0, losses:0, ties:1, score:1})
             .then(res => console.log(res.data));
         }
         

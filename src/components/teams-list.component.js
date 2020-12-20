@@ -25,7 +25,7 @@ export default class TeamList extends Component{
         this.handlePageClick = this.handlePageClick.bind(this);
     }
     recievedData(){
-        axios.get('http://localhost:5000/team/')
+        axios.get('https://s17607challenge.herokuapp.com/team/')
         .then(response => {
             let teams = response.data;
             teams.sort((a,b) => {

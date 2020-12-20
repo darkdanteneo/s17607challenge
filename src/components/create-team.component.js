@@ -26,7 +26,7 @@ export default class CreateUser extends Component{
             score: 0
         }
        
-        axios.post('http://localhost:5000/team/add', team)
+        axios.post('https://s17607challenge.herokuapp.com/team/add', team)
         .then(res => console.log(res.data));
         this.setState({
             team_name: ''

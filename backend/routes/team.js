@@ -25,14 +25,9 @@ router.route('/update').post((req, res)=>{
         team.score += req.body.score;
 
         team.save()
-        .then(() => res.json('Team Updates'))
+        .then(() => res.json('Team Updated'))
         .catch(err => res.status(400).json('Error:'+ err));
     })
-});
-router.route(':/id').delete((req, res) =>{
-    Team.findByIdAndDelete(req.params.id)
-    .then(()=> res.json('Team Deleted'))
-    .catch(err =>res.status(400).json("Error" + err));
 });
 
 module.exports = router;
