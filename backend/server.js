@@ -11,16 +11,6 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-    // Exprees will serve up production assets
-    app.use(express.static('build'));
-  
-    // Express serve up index.html file if it doesn't recognize route
-    const path = require('path');
-    app.get('/', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
-    });
-  }
 
 mongoose.connect(ur, { useNewUrlParser: true, useCreateIndex: true });
 const connection = mongoose.connection;
@@ -31,6 +21,16 @@ connection.once('open', ()=>{
 const teamRouter = require('./routes/team');
 app.use('/team', teamRouter);
 
+if (process.env.NODE_ENV === 'production') {
+  // Exprees will serve up production assets
+  app.use(express.static('build'));
+
+  // Express serve up index.html file if it doesn't recognize route
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+  });
+}
 app.listen(port, () =>{
     console.log(`server is running on port: ${port}`);
 });
